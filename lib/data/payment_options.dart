@@ -31,7 +31,7 @@ class PaymentOptions {
     paymentOptions.add(cardOption);
 
     //only add mobile money if the currency is ghanian (GHS)
-    if (currency.toUpperCase() == "NGN") {
+    if (currency.toUpperCase() == "GHS") {
       paymentOptions.add(bankOption);
     }
 

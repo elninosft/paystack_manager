@@ -10,6 +10,8 @@ class APIResponse {
   String displayText;
   String gatewayResponse;
   String authUrl;
+  dynamic authorization;
+  String authCode;
 
   APIResponse({
     this.status,
@@ -21,6 +23,8 @@ class APIResponse {
     this.nextAction,
     this.displayText,
     this.authUrl,
+    this.authorization,
+    this.authCode,
   });
 
   factory APIResponse.fromObject(dynamic object) {
@@ -33,6 +37,8 @@ class APIResponse {
     apiResponse.displayText = apiResponse.data["display_text"] ?? "";
     apiResponse.gatewayResponse = apiResponse.data["gateway_response"] ?? "";
     apiResponse.authUrl = apiResponse.data["url"] ?? "";
+    apiResponse.authorization = object['data']['authorization'];
+    apiResponse.authCode = apiResponse.authorization["authorization_code"];
 
     TransactionState mNextAction = TransactionState.PENDING;
 
